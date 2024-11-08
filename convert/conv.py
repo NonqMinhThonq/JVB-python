@@ -114,7 +114,7 @@ with pd.ExcelWriter(output_excel, engine='xlsxwriter') as writer:
     worksheet.set_column('B:B', lend - 10)  # Chủ đề
     worksheet.set_column('C:C', 50)  # Câu hỏi
     worksheet.set_column('D:D', 50)  # Câu trả lời
-    worksheet.set_column('E:E', lend - 30)  # Câu trả lời đúng
+    worksheet.set_column('E:E', lend + 30)  # Câu trả lời đúng
     worksheet.set_column('F:F', 15)  # Dạng đáp án
     worksheet.set_column('G:G', lend)  # Random câu trả lời
     worksheet.set_column('H:H', lend)  # Link ảnh đáp án
