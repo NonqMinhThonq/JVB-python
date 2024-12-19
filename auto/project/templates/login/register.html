@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Register - Create an Account</title>
+    {% load static %}
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg">
+            <div class="card-body p-0">
+                <div class="row" style="display: flex; justify-content: center;">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <!-- Display messages -->
+                            <!-- Hiển thị thông báo -->
+                            {% if messages %}
+                                <div>
+                                    {% for message in messages %}
+                                        <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <form method="POST" action="{% url 'register' %}" class="user">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="username" class="form-control form-control-user" name="username" placeholder="username" value="{{ request.POST.username }}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" name="first_name" placeholder="First Name" value="{{ request.POST.first_name }}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" name="last_name" placeholder="Last Name" value="{{ request.POST.last_name }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" name="email" placeholder="Email Address" value="{{ request.POST.email }}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user" name="password1" placeholder="Password" value="{{ request.POST.password1 }}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user" name="password2" placeholder="Repeat Password" value="{{ request.POST.password2 }}">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" name="otp" placeholder="Enter OTP" value="{{ request.POST.otp }}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <button type="submit" name="action" value="get_otp" class="btn btn-primary btn-user btn-block">Get OTP</button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block" name="action" value="confirm">Register Account</button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'forgot' %}">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'login' %}">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+</body>
+</html>
